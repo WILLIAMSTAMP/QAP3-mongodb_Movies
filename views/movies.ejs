@@ -1,0 +1,69 @@
+<html lang="en">
+    <style>table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: rgba(75, 75, 75, 0.336);
+  color: aliceblue;
+  /* display: grid; */
+  
+  color: rgb(255, 255, 255);
+  } a{
+    color: rgb(0, 214, 4);
+    display: grid;
+    justify-content: center;
+    font-size: larger;
+    font-weight: 600;
+    text-decoration: none;
+  } th {
+    display: grid;
+    justify-content: center;
+  } b {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    font-size: x-large;
+    text-align: justify;
+
+  } img {
+    display: grid;
+    justify-content: center;
+  }</style>
+    <%- include('./partials/head.ejs') %>
+    <body style="background-color:gray;">
+        <%- include('./partials/nav.ejs') %>
+        <div class="movies content" >
+            <form action="/movies" method="POST" style="display:grid; justify-content: center; background-color: black;">
+                <b style="font-size: 60px; color: aliceblue; justify-content: center; display: grid; padding-right: 40px;">Movies</b></br> 
+                <table style="display:flex; justify-content: center;" >
+                    <tr>
+                        <br>
+               
+            <% if (movies.length > 0) { %>
+                <% movies.forEach(movies => { %>
+                </tr>
+               <tr  style="display:grid; grid-column-start: 1; grid-column-end: 4;">
+                    <th style="display:grid; grid-column-start: 1;
+                    grid-column-end: 3;"><b style="display: grid; font-size: xxx-large;"";"><%= movies.title %><br><img src="<%= movies.poster%>" alt="" style="width: 200px; display:grid"></b><br><b style="display:flex; justify-content: flex-start; max-width: 600px; text-align:justify;"><%= movies.plot%></b>
+                        <br>
+                    <a href="/movies/<%=movies._id%>/edit?title=<%=movies.title%>&plot=<%=movies.plot%>&poster=<%=movies.poster%>">Edit</a>
+                    <!-- <a href="/movies/< %=Movie._id%>/edit?movieName=< %=Movie.title%>">Edit</a> -->
+                    <a href="/movies/<%=movies._id%>/delete?movieName=<%=movies.title%>">Delete</a>
+                    <a href="/movies/<%=movies._id%>/replace?title=<%=movies.title%>&plot=<%=movies.plot%>&poster=<%=movies.poster%>">Replace</a></br> 
+                    <% }) %>
+            <% } %> 
+        <tr></tr></table>
+            </br><label>Add Actor:</label></br>
+            <label>First Name:
+              <input type="text" id="title" name="" value="<%= locals.title %>" required>
+          </label>
+          <label>Last Name:
+              <input type="text" id="plot" name="plot" value="<%= locals.plot %>" required>
+          </label>
+            </br>
+            <button>POST</button>
+        </form>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

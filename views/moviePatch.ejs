@@ -1,0 +1,17 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="create content">
+            <form action="/movies/<%= locals.theId %>?_method=PATCH" method="POST">
+                <label>Edit Movie Names:</br>
+                    <input type="text" name="title" value="<%= locals.title %>" >
+                    <input type="text" name="plot" value="<%= locals.plot %>" >
+                    <input type="text" name="poster" value="<%= locals.poster %>" >
+                </label></br>
+                <button>PATCH</button>
+            </form>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>

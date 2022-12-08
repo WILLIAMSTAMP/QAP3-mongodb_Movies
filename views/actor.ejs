@@ -1,0 +1,15 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/nav.ejs') %>
+        <div class="Movie content">
+            <h2>movies:</h2>
+            <% if (anMovie.length > 0) 
+                var movies = anMovie[0];{ %>
+                <h3><%= movies.title %> <%= movies.plot %>
+                </h3> 
+            <% } %>
+        </div>
+    </body>
+    <%- include('./partials/foot.ejs') %>
+</html>
